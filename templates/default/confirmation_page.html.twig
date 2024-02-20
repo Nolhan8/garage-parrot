@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Balises meta pour définir l'encodage et l'échelle d'affichage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titre de la page -->
+    <title>Confirmation - Garage V. Parrot</title>
+    <!-- Liens vers les feuilles de style -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <!-- Titre principal -->
+        <div>
+            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
+            <h1>Garage V. Parrot</h1>
+        </div>
+        <!-- Bouton de bascule pour le menu mobile -->
+        <div class="menu-toggle">&#9776;</div>
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ path('app_default_home') }}">Accueil</a>
+            <a href="{{ path('occasion') }}">Occasion</a>
+            <a href="{{ path('app_default_services') }}">Services</a>
+            <a href="{{ path('app_default_contact') }}">Contact</a>
+            <a href="{{ path('app_default_feedback') }}">Témoignages</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </nav>
+    </header>
+    <!-- Contenu principal -->
+    <div class="container">
+        <!-- Titre principal de la section Confirmation -->
+        <div class="big-title">
+            <img src="{{ asset('images/stars.jpg') }}" alt="Confirmation" class="full-width-image">
+            <div class="big-title-overlay"></div>
+            <h2>Confirmation</h2>
+        </div>
+        <!-- Message de confirmation -->
+        <div class="confirmation-message">
+            <p>Votre témoignage a bien été soumis. Merci!</p>
+        </div>
+    </div>
+    <!-- Pied de page -->
+    <footer>
+        <div class="container-footer">
+            <!-- Sections du pied de page -->
+            <div class="footer-section">
+                <h3>Horaires d'ouverture</h3>
+                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
+                <p>Samedi : 8h45 - 12h00</p>
+                <p>Dimanche : Fermé</p>
+            </div>
+            <div class="footer-section">
+                <h3>Adresse</h3>
+                <p>123 Rue de la République</p>
+                <p>75001 Paris, France</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact :</h3>
+                <!-- Lien de contact -->
+                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
+                <p>contact@garageparrot.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <!-- Droits d'auteur -->
+            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+        </div>
+    </footer>
+    <!-- Script JavaScript pour la bascule du menu mobile -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+</body>
+</html>

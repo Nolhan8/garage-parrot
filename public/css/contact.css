@@ -1,0 +1,20 @@
+/* Formulaire de contact */
+.contact-form{
+    margin: 5vh 25vw 5vh; /* Marge */
+}
+
+/* Paragraphe dans le formulaire de contact */
+.contact-form p{
+    text-align: center; /* Alignement centré */
+    margin: 0 10vw 0; /* Marge */
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 767px) {
+    .big-title {
+        height: 20vh; /* Hauteur pour les petits écrans */
+    }
+    .contact-form{
+        margin: 3vh 10vw 3vh; /* Marge pour les petits écrans */
+    }
+}

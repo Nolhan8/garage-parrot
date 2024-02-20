@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Déclaration du jeu de caractères et de la vue -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titre de la page -->
+    <title>Services de réparation - Garage V. Parrot</title>
+    <!-- Liens vers les fichiers CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/services.css') }}">
+</head>
+<body>
+    <!-- En-tête de la page -->
+    <header>
+        <!-- Titre principal -->
+        <div>
+            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
+            <h1>Garage V. Parrot</h1>
+        </div>
+        <!-- Bouton de menu pour les appareils mobiles -->
+        <div class="menu-toggle">&#9776;</div>
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ path('app_default_home') }}">Accueil</a>
+            <a href="{{ path('occasion') }}">Occasion</a>
+            <a class="active" href="{{ path('app_default_services') }}">Services</a>
+            <a href="{{ path('app_default_contact') }}">Contact</a>
+            <a href="{{ path('feedback') }}">Témoignages</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </nav>
+    </header>
+    <!-- Conteneur principal -->
+    <div class="container">
+        <!-- Image de grande taille avec superposition -->
+        <div class="big-title">
+            <img src="{{ asset('images/cars1.jpg') }}" alt="Services de réparation" class="full-width-image">
+            <div class="big-title-overlay"></div>
+            <h2>Nos services</h2>
+        </div>
+        <!-- Contenu des services de réparation -->
+        <div class="row">
+            <!-- Bloc de service -->
+            <div class="service-block">
+                <!-- Image du service -->
+                <div class="service-image">
+                    <img src="{{ asset('images/carosserie.jpg') }}" alt="Carosserie">
+                </div>
+                <!-- Contenu du service -->
+                <div class="service-content">
+                    <!-- Icône du service -->
+                    <i class="fa-solid fa-paint-roller fa-3x icon"></i>
+                    <!-- Titre du service -->
+                    <h3>Carosserie</h3>
+                    <!-- Description du service -->
+                    <p>Redonnez vie à votre voiture avec notre service de réparation de carrosserie :
+                         expertise, précision et savoir-faire au service de la beauté et de la résilience
+                          de votre véhicule.</p>
+                </div>
+            </div>
+            <!-- Blocs de service similaires pour les autres services -->
+            <div class="service-block">
+                <div class="service-content">
+                    <i class="fas fa-tools fa-3x icon"></i><h3>Mécanique</h3>
+                    <p>Confiez la santé de votre voiture à nos experts en réparation mécanique :
+                         performance et fiabilité au rendez-vous pour des trajets en toute sérénité.</p>
+                </div>
+                <div class="service-image">
+                    <img src="{{ asset('images/engine.jpg') }}" alt="Mécanique">
+                </div>
+            </div>
+            <div class="service-block">
+                <div class="service-image">
+                    <img src="{{ asset('images/cleaning.jpg') }}" alt="Entretien">
+                </div>
+                <div class="service-content">
+                    <i class="fa-solid fa-gears fa-3x icon"></i><h3>Entretien</h3>
+                    <p>Assurez la longévité et la sécurité de votre véhicule avec notre service d'entretien régulier :
+                         une garantie de performance et de tranquillité d'esprit sur toutes les routes.</p>
+                </div>
+            </div>
+            <div class="service-block">
+                <div class="service-content">
+                    <i class="fa-solid fa-car fa-3x icon"></i><h3>Véhicules d'occasion</h3>
+                    <p>Découvrez l'excellence à chaque virage avec notre sélection de véhicules d'occasion :
+                         qualité, fiabilité et passion réunies pour vous offrir la voiture de vos rêves.</p>
+                    <a href="{{ path('occasion') }}" class="btn btn-danger mt-3">Voir plus</a>
+                </div>
+                <div class="service-image">
+                    <img src="{{ asset('images/mercedes.jpg') }}" alt="Véhicules d'occasion">
+                </div>
+            </div>
+            <div class="service-block">
+                <div class="service-image">
+                    <img src="{{ asset('images/telephone.jpg') }}" alt="telephone">
+                </div>
+                <div class="service-content">
+                    <i class="fa-solid fa-phone fa-3x icon"></i><h3>Vous êtes décidés ?</h3>
+                    <p>De la pause café à la découverte de votre voiture parfaite, Vincent Parrot 
+                        vous accueille avec passion et expertise. Contactez-nous ou venez nous rendre
+                         visite dès maintenant !</p>
+                    <a href="{{ path('app_default_contact') }}" class="btn btn-danger mt-3">Contactez-nous !</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bouton fixe pour laisser un avis -->
+    <div class="info-bubble">Laissez un avis !</div>
+    <a href="{{ path('feedback') }}" class="fixed-button">
+        <!-- Icône pour le bouton -->
+        <i class="fas fa-comment"></i>
+    </a>
+    <!-- Pied de page -->
+    <footer>
+        <!-- Conteneur du pied de page -->
+        <div class="container-footer">
+            <!-- Sections du pied de page -->
+            <div class="footer-section">
+                <!-- Horaires d'ouverture -->
+                <h3>Horaires d'ouverture</h3>
+                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
+                <p>Samedi : 8h45 - 12h00</p>
+                <p>Dimanche : Fermé</p>
+            </div>
+            <div class="footer-section">
+                <!-- Adresse -->
+                <h3>Adresse</h3>
+                <p>123 Rue de la République</p>
+                <p>75001 Paris, France</p>
+            </div>
+            <div class="footer-section">
+                <!-- Contact -->
+                <h3>Contact :</h3>
+                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
+                <p>contact@garageparrot.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <!-- Droits d'auteur -->
+            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+        </div>
+    </footer>
+    <!-- Script pour activer/désactiver la navigation sur les appareils mobiles -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <!-- Chargement de la bibliothèque d'icônes -->
+    <script src="https://kit.fontawesome.com/8bd5dfedd7.js" crossorigin="anonymous"></script>
+</body>
+</html>

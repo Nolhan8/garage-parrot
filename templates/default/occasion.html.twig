@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Véhicules d'occasion - Garage V. Parrot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/occasion.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div>
+            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
+            <h1>Garage V. Parrot</h1>
+        </div>
+        <!-- Bouton de bascule pour le menu mobile -->
+        <div class="menu-toggle">&#9776;</div>
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ path('app_default_home') }}">Accueil</a>
+            <a class="active" href="{{ path('occasion') }}">Occasion</a>
+            <a href="{{ path('app_default_services') }}">Services</a>
+            <a href="{{ path('app_default_contact') }}">Contact</a>
+            <a href="{{ path('feedback') }}">Témoignages</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </nav>
+    </header>
+    <!-- Contenu principal -->
+    <div class="container">
+        <!-- Titre principal -->
+        <div class="big-title">
+            <img src="{{ asset('images/cars2.jpg') }}" alt="Véhicules d'occasion" class="full-width-image">
+            <div class="big-title-overlay"></div>
+            <h2>Véhicules d'occasion</h2>
+        </div>
+<div class="filters">
+    <div class="row justify-content-center">
+        <!-- Bouton Filtre pour la version mobile -->
+        <div class="col-12 d-md-none">
+            <button id="filter-toggle-btn" class="btn btn-danger">Filtres <i class="bi bi-filter"></i></button>
+        </div>
+        <div class="filters-content col-md-8">
+            <!-- Groupe de filtres -->
+            <div class="filter-group">
+                <!-- Filtre de prix -->
+                <div class="filter">
+                    <label for="priceRange">Prix :</label>
+                    <!-- Curseur personnalisé pour le prix minimum -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Min</span>
+                        <input type="number" class="form-control" id="minPriceInput" value="0" min="0" max="100000">
+                    </div>
+                    <!-- Curseur personnalisé pour le prix maximum -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Max</span>
+                        <input type="number" class="form-control" id="maxPriceInput" value="100000" min="0" max="100000">
+                    </div>
+                </div>
+                <!-- Filtre de kilométrage -->
+                <div class="filter">   
+                    <div class="mileage-range">
+                        <label for="mileageRange">Kilométrage :</label>
+                        <!-- Curseur personnalisé pour le kilométrage minimum -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Min</span>
+                            <input type="number" class="form-control" id="minMileageInput" value="0" min="0" max="250000">
+                        </div>
+                        <!-- Curseur personnalisé pour le kilométrage maximum -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Max</span>
+                            <input type="number" class="form-control" id="maxMileageInput" value="250000" min="0" max="250000">
+                        </div>
+                    </div>
+                </div>
+                <!-- Filtre d'année -->
+                <div class="filter">
+                    <div class="year-range">
+                        <label for="yearRange">Année :</label>
+                        <!-- Curseur personnalisé pour l'année minimum -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Min</span>
+                            <input type="number" class="form-control" id="minYearInput" value="1900" min="1900" max="2024">
+                        </div>
+                        <!-- Curseur personnalisé pour l'année maximum -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Max</span>
+                            <input type="number" class="form-control" id="maxYearInput" value="2024" min="1900" max="2024">
+                        </div>
+                    </div>
+                </div>
+            </div>                   
+        </div>
+    </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-3">
+    {% for car in cars %}
+    <div class="col-md-4">
+        <div class="card" data-model="{{ car.model }}" data-price="{{ car.price }}" data-kilometer="{{ car.kilometer }}" data-year="{{ car.year }}">
+            <img src="{{ asset('images/occasion/cactus.jpg') }}" class="card-img-top" alt="Voiture d'occasion">
+            <div class="card-body">
+                <h3 class="card-title">{{ car.model }}</h3>
+                <p class="card-price">Prix : {{ car.price }} €</p>
+                <p class="card-km">Kilomètrage :{{ car.kilometer }} km</p>
+                <p class="card-year">Année :{{ car.year }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+    </div>
+    <!-- Bouton fixe -->
+    <div class="info-bubble">Laissez un avis !</div>
+    <a href="{{ path('feedback') }}" class="fixed-button">
+        <i class="fas fa-comment"></i> <!-- Icône pour le bouton -->
+    </a>
+    <!-- Pied de page -->
+    <footer>
+        <div class="container-footer">
+            <div class="footer-section">
+                <h3>Horaires d'ouverture</h3>
+                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
+                <p>Samedi : 8h45 - 12h00</p>
+                <p>Dimanche : Fermé</p>
+            </div>
+            <div class="footer-section">
+                <h3>Adresse</h3>
+                <p>123 Rue de la République</p>
+                <p>75001 Paris, France</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
+                <p>contact@garageparrot.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <!-- Droits d'auteur -->
+            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/filters.js') }}"></script>
+    <script src="https://kit.fontawesome.com/8bd5dfedd7.js" crossorigin="anonymous"></script>
+</body>
+</html>

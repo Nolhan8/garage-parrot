@@ -1,0 +1,28 @@
+/* Styles de la section de formulaire de connexion */
+.login-form {
+    margin: 10vh 30vw 15vh;
+}
+
+/* Styles du formulaire */
+form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Styles des paragraphes dans la section de formulaire de connexion */
+.login-form p {
+    text-align: center;
+    margin: 0 10vw 0;
+}
+
+/* Media query pour les écrans de petite taille */
+@media (max-width: 767px) {
+    .big-title {
+        height: 20vh;
+    }
+    .login-form {
+        margin: 3vh 10vw 3vh;
+    }
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Garage V. Parrot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"> <!-- Ajoutez le CSS spécifique au tableau de bord -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div>
+            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
+            <h1>Garage V. Parrot</h1>
+        </div>
+        <div class="menu-toggle">&#9776;</div>
+        <nav>
+            <a href="{{ path('app_default_home') }}">Accueil</a>
+            <a class="active" href="{{ path('admin_dashboard') }}">Dashboard</a> <!-- Lien actif sur le dashboard -->
+            <a href="{{ path('occasion') }}">Occasion</a>
+            <a href="{{ path('app_default_services') }}">Services</a>
+            <a href="{{ path('app_default_contact') }}">Contact</a>
+            <a href="{{ path('feedback') }}">Témoignages</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </nav>
+    </header>
+    <!-- Contenu principal -->
+    <div class="container">
+        <!-- Big Title -->
+        <div class="big-title">
+            <img src="{{ asset('images/cars1.jpg') }}" alt="Dashboard" class="full-width-image">
+            <div class="big-title-overlay"></div>
+            <h2>Dashboard</h2>
+        </div>
+        <!-- Dashboard tabs -->
+        <div class="dashboard-tabs">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#occasion">Occasion</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#temoignages">Témoignages</a></li>
+            </ul>
+            <!-- Contenu des onglets (à remplir selon vos besoins) -->
+            <div class="tab-content">
+                <!-- Contenu pour l'onglet Voitures -->
+                <div id="occasion" class="tab-pane fade">
+                    <h3>Gestion des voitures</h3>
+                    <hr>
+                    <!-- Tableau pour afficher les voitures -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Modèle</th>
+                                <th>Prix</th>
+                                <th>Kilométrage</th>
+                                <th>Année</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cars-table">
+                            <!-- Les voitures seront affichées ici -->
+                        </tbody>
+                    </table>
+
+                    <!-- Formulaire pour créer une nouvelle voiture -->
+                    <h4>Créer une nouvelle voiture</h4>
+                    <form id="create-car-form" action="{{ path('api_occasion_cars_new') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="model">Modèle</label>
+                            <input type="text" name="model" id="model" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Prix</label>
+                            <input type="number" name="price" id="price" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kilometer">Kilométrage</label>
+                            <input type="number" name="kilometer" id="kilometer" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Année</label>
+                            <input type="number" name="year" id="year" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Image</label>
+                            <input type="file" name="image" id="image" class="form-control-file" accept="image/**">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Créer la voiture</button>
+                    </form>
+
+                    <!-- Script JavaScript pour gérer les interactions avec l'API -->
+                    <script>
+                        // Fonction pour afficher les voitures
+                        function fetchCars() {
+                            fetch('{{ path('api_occasion_cars_index') }}')
+                                .then(response => response.json())
+                                .then(data => {
+                                    const carsTable = document.getElementById('cars-table');
+                                    carsTable.innerHTML = '';
+                                    data.forEach(car => {
+                                        const row = document.createElement('tr');
+                                        row.innerHTML = `
+                                            <td>${car.id}</td>
+                                            <td>${car.model}</td>
+                                            <td>${car.price}</td>
+                                            <td>${car.kilometer}</td>
+                                            <td>${car.year}</td>
+                                            <td>${car.img}</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" onclick="editCar(${car.id})">Modifier</button>
+                                                <button class="btn btn-danger btn-sm" onclick="deleteCar(${car.id})">Supprimer</button>
+                                            </td>
+                                        `;
+                                        carsTable.appendChild(row);
+                                    });
+                                });
+                        }
+
+                        // Fonction pour créer une nouvelle voiture
+                        document.getElementById('create-car-form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            const formData = new FormData(this);
+                            const carData = {};
+                            formData.forEach((value, key) => {
+                                carData[key] = value;
+                            });
+                            fetch('{{ path('api_occasion_cars_new') }}', {
+                                method: 'POST',
+                                body: JSON.stringify(carData),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then(() => {
+                                fetchCars();
+                                this.reset();
+                            });
+                        });
+
+                        // Fonction pour modifier une voiture
+                        function editCar(id) {
+                            const newModel = prompt('Entrez le nouveau modèle :');
+                            if (newModel) {
+                                fetch('{{ path('api_occasion_cars_edit', {'id': 0}) }}'.replace('0', id), {
+                                    method: 'PUT',
+                                    body: JSON.stringify({ model: newModel }),
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }
+                                })
+                                .then(() => fetchCars());
+                            }
+                        }
+
+                        // Fonction pour supprimer une voiture
+                        function deleteCar(id) {
+                            if (confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')) {
+                                fetch('{{ path('api_occasion_cars_delete', {'id': 0}) }}'.replace('0', id), {
+                                    method: 'DELETE'
+                                })
+                                .then(() => fetchCars());
+                            }
+                        }
+
+                        // Appel initial pour afficher les voitures
+                        fetchCars();
+                    </script>
+                </div>
+                <div id="temoignages" class="tab-pane fade">
+                    <!-- Contenu pour l'onglet Témoignages -->
+                    <h3>Gestion des Témoignages</h3>
+                    <hr>
+                    <!-- Tableau pour afficher les témoignages -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Auteur</th>
+                                <th>Note</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feedbacks-table">
+                            <!-- Les témoignages seront affichés ici -->
+                        </tbody>
+                    </table>
+
+                    <!-- Script JavaScript pour gérer les interactions avec l'API -->
+                    <script>
+                        // Fonction pour afficher les témoignages
+                        function fetchFeedbacks() {
+                            fetch('{{ path('api_feedbacks_index') }}')
+                                .then(response => response.json())
+                                .then(data => {
+                                    const feedbacksTable = document.getElementById('feedbacks-table');
+                                    feedbacksTable.innerHTML = '';
+                                    data.forEach(feedback => {
+                                        const row = document.createElement('tr');
+                                        row.innerHTML = `
+                                            <td>${feedback.id}</td>
+                                            <td>${feedback.authorName}</td>
+                                            <td>${feedback.rating}</td>
+                                            <td>${feedback.message}</td>
+                                            <td>${feedback.moderationStatus}</td>
+                                            <td>
+                                                <button class="btn btn-success btn-sm" onclick="approveFeedback(${feedback.id})">Approuver</button>
+                                                <button class="btn btn-danger btn-sm" onclick="deleteFeedback(${feedback.id})">Supprimer</button>
+                                            </td>
+                                        `;
+                                        feedbacksTable.appendChild(row);
+                                    });
+                                });
+                        }
+
+                        // Fonction pour approuver un témoignage
+                        function approveFeedback(id) {
+                            fetch('{{ path('api_feedbacks_approve', {'id': 0}) }}'.replace('0', id), {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then(() => fetchFeedbacks());
+                        }
+
+                        // Fonction pour supprimer un témoignage
+                        function deleteFeedback(id) {
+                            if (confirm('Êtes-vous sûr de vouloir supprimer ce témoignage ?')) {
+                                fetch('{{ path('api_feedbacks_delete', {'id': 0}) }}'.replace('0', id), {
+                                    method: 'DELETE'
+                                })
+                                .then(() => fetchFeedbacks());
+                            }
+                        }
+
+                        // Appel initial pour afficher les témoignages
+                        fetchFeedbacks();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bouton fixe pour laisser un avis -->
+    <div class="info-bubble">Laissez un avis !</div>
+    <a href="{{ path('feedback') }}" class="fixed-button">
+        <i class="fas fa-comment"></i>
+    </a>
+    <!-- Footer -->
+    <footer>
+        <div class="container-footer">
+            <div class="footer-section">
+                <h3>Horaires d'ouverture</h3>
+                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
+                <p>Samedi : 8h45 - 12h00</p>
+                <p>Dimanche : Fermé</p>
+            </div>
+            <div class="footer-section">
+                <h3>Adresse</h3>
+                <p>123 Rue de la République</p>
+                <p>75001 Paris, France</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
+                <p>contact@garageparrot.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+        </div>
+    </footer>
+    <!-- Chargement de la bibliothèque jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Chargement de la bibliothèque Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script pour activer/désactiver la navigation sur les appareils mobiles -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <!-- Chargement de la bibliothèque d'icônes -->
+    <script src="https://kit.fontawesome.com/8bd5dfedd7.js" crossorigin="anonymous"></script>
+</body>
+</html>

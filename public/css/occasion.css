@@ -1,0 +1,81 @@
+/* Styles des cartes */
+.card {
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Styles des images dans les cartes */
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Styles du corps des cartes */
+.card-body {
+    padding: 20px;
+}
+
+/* Styles du titre des cartes */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styles du prix des cartes */
+.card-price {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* Styles des filtres sur desktop */
+.filters-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0px 10px;
+}
+
+/* Styles des groupes de filtres */
+.filter-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espace entre les filtres */
+}
+
+/* Styles des filtres */
+.filter {
+    flex: 1; /* Chaque filtre prend autant d'espace que possible */
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 767px) {
+    .big-title {
+        height: 20vh;
+    }
+    
+    /* Cacher les filtres desktop par défaut */
+    .filters-content {
+        display: none;
+    }
+
+    /* Afficher les filtres lorsque la classe 'show-filters' est appliquée */
+    .filters-content.show-filters {
+        display: block;
+    }
+
+    /* Styling pour le bouton */
+    .btn-primary {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+

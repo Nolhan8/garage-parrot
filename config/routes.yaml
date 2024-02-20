@@ -1,0 +1,126 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+    methods: ['GET', 'POST']
+
+occasion:
+    path: /occasion
+    controller: App\Controller\DefaultController::occasion
+    
+api_users_index:
+    path: /api/users
+    controller: 'App\Controller\UserController::index'
+    methods: [GET]
+
+api_users_new:
+    path: /api/users
+    controller: 'App\Controller\UserController::new'
+    methods: [POST]
+
+api_users_show:
+    path: /api/users/{id}
+    controller: 'App\Controller\UserController::show'
+    methods: [GET]
+
+api_users_edit:
+    path: /api/users/{id}
+    controller: 'App\Controller\UserController::edit'
+    methods: [PUT]
+
+api_users_delete:
+    path: /api/users/{id}
+    controller: 'App\Controller\UserController::delete'
+    methods: [DELETE]
+
+admin_dashboard:
+    path: /admin/dashboard
+    controller: App\Controller\AdminController::dashboard
+
+admin_create_user:
+    path: /admin/user/create
+    controller: App\Controller\AdminController::createUser
+
+user_dashboard:
+    path: /user/dashboard
+    controller: App\Controller\DashboardController::index
+
+home:
+    path: /
+    controller: App\Controller\DefaultController::home
+
+contact:
+    path: /contact
+    controller: App\Controller\DefaultController::contact
+
+feedback:
+    path: /feedback
+    controller: App\Controller\DefaultController::feedback
+
+feedback_submit:
+    path: /feedback/submit
+    controller: App\Controller\FeedbackController::submit
+    methods: ['POST']
+
+api_occasion_index:
+    path: api/occasion/cars
+    controller: App\Controller\OccasionController::index
+
+api_occasion_new:
+    path: api/occasion/cars
+    controller: App\Controller\OccasionController::new
+    methods: [POST]
+
+api_occasion_show:
+    path: /api/occasion/{id}
+    controller: 'App\Controller\OccasionController::show'
+    methods: [GET]
+
+api_occasion_edit:
+    path: /api/occasion/{id}
+    controller: 'App\Controller\OccasionController::edit'
+    methods: [PUT]
+
+api_occasion_delete:
+    path: /api/occasion/{id}
+    controller: 'App\Controller\OccasionController::delete'
+    methods: [DELETE]
+
+services:
+    path: /services
+    controller: App\Controller\DefaultController::services
+
+dashboard_feedback:
+    path: /dashboard-feedback
+    controller: App\Controller\FeedbackController::feedback
+    methods: ['GET']
+
+api_feedbacks_index:
+    path: /api/feedbacks/
+    controller: App\Controller\FeedbackController::index
+    methods: ['GET']
+
+api_feedbacks_new:
+    path: /api/feedbacks/
+    controller: App\Controller\FeedbackController::new
+    methods: ['POST']
+
+api_feedbacks_approve:
+    path: /api/feedbacks/{id}
+    controller: App\Controller\FeedbackController::approve
+    methods: ['PUT']
+
+api_feedbacks_delete:
+    path: /api/feedbacks/{id}
+    controller: App\Controller\FeedbackController::delete
+    methods: ['DELETE']
+
+handle_contact_form:
+    path: '/contact'
+    controller: 'App\Controller\YourController::handleContactForm'
+    methods: ['POST']

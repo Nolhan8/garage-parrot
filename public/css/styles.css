@@ -1,0 +1,262 @@
+/* Réinitialisation des styles */
+body {
+    font-family: Arial, sans-serif; /* Utilisation de la police de caractères par défaut */
+    margin: 0; /* Suppression des marges extérieures */
+    padding: 0; /* Suppression des marges intérieures */
+    background-color: #f4f4f4; /* Couleur de fond */
+    color: #333; /* Couleur du texte par défaut */
+}
+
+/* Styles du logo */
+.logo {
+    width: auto; /* Largeur automatique pour maintenir les proportions */
+    height: 55px; /* Hauteur du logo */
+}
+
+/* Styles du header */
+header {
+    background-color: #333; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement interne */
+    display: flex; /* Affichage en flexbox */
+    justify-content: space-between; /* Alignement horizontal */
+    align-items: center; /* Alignement vertical */
+    position: relative; /* Positionnement relatif pour les éléments positionnés absolument à l'intérieur */
+}
+
+/* Styles du texte h1 dans le header */
+header h1 {
+    display: inline-block; /* Affichage en bloc inline */
+    vertical-align: middle; /* Alignement vertical au milieu */
+    margin-top: 5px; /* Marge supérieure */
+}
+
+/* Styles de la navigation */
+nav {
+    display: none; /* Masquage par défaut */
+    flex-direction: column; /* Direction de la colonne en flexbox */
+    align-items: center; /* Alignement vertical */
+    background-color: #333; /* Couleur de fond */
+    position: absolute; /* Positionnement absolu par rapport au header */
+    top: 50px; /* Position à partir du haut */
+    left: 0; /* Position à partir de la gauche */
+    width: 100%; /* Largeur maximale */
+    z-index: 999; /* Ordre d'empilement */
+}
+
+/* Styles des liens de navigation */
+nav a {
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Suppression du soulignement */
+    padding: 10px 20px; /* Espacement interne */
+    transition: background-color 0.3s; /* Transition en cas de survol */
+}
+
+/* Styles des liens de navigation au survol */
+nav a:hover {
+    background-color: #555; /* Changement de couleur de fond */
+}
+
+/* Styles du lien de navigation actif */
+nav a.active {
+    background-color: #555; /* Couleur de fond */
+}
+
+/* Activation de la navigation en version mobile */
+.active-nav {
+    display: flex; /* Affichage de la navigation */
+}
+
+/* Styles du bouton de menu */
+.menu-toggle {
+    display: block; /* Affichage en bloc */
+    cursor: pointer; /* Curseur pointeur */
+    position: relative; /* Positionnement relatif pour les éléments positionnés absolument à l'intérieur */
+    z-index: 1000; /* Ordre d'empilement */
+}
+/* Styles des images en plein largeur */
+.full-width-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0;
+}
+
+/* Styles du titre principal */
+.big-title {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Styles du titre h2 dans le titre principal */
+.big-title h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Styles de l'overlay du titre principal */
+.big-title-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+/* Styles du container principal */
+.container {
+    padding: 0; /* Suppression des marges intérieures */
+    margin: 0; /* Suppression des marges extérieures */
+    overflow: hidden; /* Masquage du contenu en dehors du container */
+    width: 100%; /* Largeur maximale */
+    max-width: none; /* Largeur maximale non définie */
+}
+
+/* Styles du footer */
+footer {
+    background-color: #333; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 20px 0; /* Espacement interne */
+    margin-top: 0; /* Marge supérieure */
+}
+
+/* Styles du container du footer */
+.container-footer {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centrage horizontal */
+    display: flex; /* Affichage en flexbox */
+    flex-wrap: wrap; /* Enveloppement sur plusieurs lignes */
+    justify-content: space-between; /* Alignement horizontal */
+    align-items: center; /* Alignement vertical */
+    text-align: center; /* Alignement du texte */
+}
+
+/* Styles des sections du footer */
+.footer-section {
+    flex: 1; /* Distribution équitable de l'espace disponible */
+    margin-bottom: 10px; /* Marge inférieure */
+}
+
+
+/* Styles des paragraphes dans les sections du footer */
+.footer-section p {
+    margin: 5px 0; /* Marges verticales */
+}
+/* Styles du copyright */
+.copyright {
+    color: #fff; /* Couleur du texte */
+    padding: 20px 0 0; /* Espacement interne */
+    text-align: center; /* Alignement du texte au centre */
+}
+
+
+/* Styles du message "Laissez un avis !" */
+.info-bubble {
+    position: fixed; /* Positionnement fixe par rapport à la fenêtre */
+    bottom: 30px; /* Position à partir du bas */
+    right: 75px; /* Position à partir de la droite */
+    background-color: #ff0000; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 5px 10px; /* Espacement interne */
+    border-radius: 5px; /* Bordures arrondies */
+    z-index: 999; /* Ordre d'empilement */
+    font-size: 12px; /* Taille de police */
+}
+
+/* Styles du bouton fixe */
+.fixed-button {
+    position: fixed; /* Positionnement fixe par rapport à la fenêtre */
+    bottom: 20px; /* Position à partir du bas */
+    right: 20px; /* Position à partir de la droite */
+    background-color: #ff0000; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    width: 50px; /* Largeur */
+    height: 50px; /* Hauteur */
+    border-radius: 50%; /* Bordure arrondie pour créer un cercle */
+    display: flex; /* Affichage en flexbox */
+    justify-content: center; /* Alignement horizontal au centre */
+    align-items: center; /* Alignement vertical au centre */
+    font-size: 20px; /* Taille de police */
+    text-decoration: none; /* Suppression du soulignement */
+    z-index: 998; /* Ordre d'empilement */
+}
+
+/* Styles du bouton fixe au survol */
+.fixed-button:hover {
+    background-color: #790000; /* Changement de couleur de fond au survol */
+}
+
+/* Styles responsifs pour les écrans de petite taille */
+@media (max-width: 767px) {
+    .container-footer {
+        flex-direction: column; /* Direction de la colonne en flexbox */
+        text-align: center; /* Alignement du texte */
+    }
+    .footer-section {
+        flex-basis: 100%; /* Largeur maximale */
+    }
+    .fixed-button {
+        bottom: 10px; /* Position à partir du bas */
+        right: 10px; /* Position à partir de la droite */
+        width: 40px; /* Largeur */
+        height: 40px; /* Hauteur */
+    }
+    .info-bubble {
+        bottom: 16px; /* Position à partir du bas */
+        right: 50px; /* Position à partir de la droite */
+        font-size: 11px; /* Taille de police */
+    }
+}
+
+/* Styles responsifs pour les écrans de taille moyenne et supérieure */
+@media (min-width: 768px) {
+    header div h1 {
+        font-size: 1.5rem; /* Taille de police */
+    }
+    .logo {
+        display: inline-block; /* Affichage en ligne */
+    }
+    nav {
+        display: flex; /* Affichage de la navigation */
+        position: static; /* Positionnement statique par défaut */
+        background-color: transparent; /* Couleur de fond transparente */
+        width: auto; /* Largeur automatique */
+        flex-direction: row; /* Direction de la ligne en flexbox */
+        justify-content: flex-end; /* Alignement horizontal à droite */
+        margin-bottom: 0; /* Suppression de la marge inférieure */
+    }
+    nav a {
+        width: auto; /* Largeur automatique */
+        margin-left: 20px; /* Marge à gauche */
+    }
+    .menu-toggle {
+        display: none; /* Masquage du bouton de menu */
+    }
+    .container {
+        padding-right: 0; /* Suppression du padding à droite */
+    }
+    body {
+        margin-right: 0; /* Suppression de la marge à droite */
+    }
+}
+
+/* Styles responsifs pour les écrans de taille moyenne */
+@media (max-width:1150px){
+    .logo {
+        display: none; /* Masquage du logo */
+    }
+}

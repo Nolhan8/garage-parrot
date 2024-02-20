@@ -1,0 +1,30 @@
+/* Styles de la section de laisser un avis */
+.leave-feedback {
+    margin: 5vh 10vw;
+}
+
+/* Styles du titre h3 dans la section de laisser un avis */
+.leave-feedback h3 {
+    text-align: center;
+}
+
+/* Styles des cartes de retour d'information */
+.feedback-cards {
+    margin: 10px;
+}
+
+/* Styles des cartes */
+.card {
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query pour les écrans de petite taille */
+@media (max-width: 767px) {
+    .big-title {
+        height: 20vh;
+    }
+    .leave-feedback {
+        margin: 3vh 5vw;
+    }
+}

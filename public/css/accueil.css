@@ -1,0 +1,58 @@
+/* Image en plein largeur */
+.full-width-image {
+    height: 400px; /* Hauteur fixe */
+}
+
+/* Éléments positionnés relativement */
+.position-relative {
+    position: relative; /* Position relative */
+    overflow: hidden; /* Masquage du débordement */
+    width: 100%; /* Largeur maximale */
+}
+
+/* Superpositions */
+.overlay {
+    position: absolute; /* Position absolue */
+    top: 0; /* En haut */
+    left: 0; /* À gauche */
+    width: 100%; /* Pleine largeur */
+    height: 100%; /* Pleine hauteur */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    color: #fff; /* Texte blanc */
+    text-align: center; /* Centre le texte */
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Colonnes */
+    justify-content: center; /* Centré verticalement */
+    align-items: center; /* Centré horizontalement */
+    padding: 20px; /* Rembourrage */
+    box-sizing: border-box; /* Inclut les bordures et le rembourrage */
+}
+
+/* Texte des superpositions */
+.overlay-text {
+    font-size: 1.2rem; /* Taille de police */
+    font-weight: bold; /* Gras */
+    margin-bottom: 10px; /* Marge inférieure */
+    line-height: 1.5; /* Hauteur de ligne */
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 767px) {
+    .overlay-text {
+        font-size: 1rem; /* Taille de police réduite */
+    }
+    .overlay-text.large {
+        font-size: 1.5rem; /* Taille de police plus grande pour les grands titres */
+    }
+}
+
+/* Styles des grands titres */
+.overlay-text.large {
+    font-size: 1.8rem; /* Taille de police */
+    margin-bottom: 20px; /* Marge inférieure */
+}
+
+/* Styles des boutons */
+.btn {
+    margin-top: 20px; /* Marge supérieure */
+}

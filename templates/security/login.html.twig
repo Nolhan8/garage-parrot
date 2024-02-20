@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Garage V. Parrot</title>
+    <!-- Liens vers les fichiers CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+</head>
+<body>
+    <!-- En-tête de la page -->
+    <header>
+        <div>
+            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
+            <h1>Garage V. Parrot</h1>
+        </div>
+        <!-- Bouton de menu pour les appareils mobiles -->
+        <div class="menu-toggle">&#9776;</div>
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ path('app_default_home') }}">Accueil</a>
+            <a href="{{ path('occasion') }}">Occasion</a>
+            <a href="{{ path('app_default_services') }}">Services</a>
+            <a href="{{ path('app_default_contact') }}">Contact</a>
+            <a href="{{ path('feedback') }}">Témoignages</a>
+            <a class="active" href="{{ path('app_login') }}">Connexion</a>
+        </nav>
+    </header>
+    <!-- Contenu principal de la page -->
+    <div class="container">
+        <!-- Image de grande taille avec superposition -->
+        <div class="big-title">
+            <img src="{{ asset('images/auto-repair.jpg') }}" alt="Connexion" class="full-width-image">
+            <div class="big-title-overlay"></div>
+            <h2>Connexion</h2>
+        </div>
+        <!-- Formulaire de connexion -->
+        <div class="login-form">
+            {% if error %}
+                <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+            {% endif %}
+            <p>Connexion employé</p>
+            <form action="{{ path('check_login') }}" method="post">
+                <!-- Champ de saisie pour l'username -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nom d'utilisateur</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Entrez votre nom d'utilisateur" required>
+                </div>
+                <!-- Champ de saisie pour le mot de passe -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="_password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <!-- Bouton de soumission du formulaire -->
+                <button type="submit" class="btn btn-danger">Se connecter</button>
+            </form>
+        </div>
+    </div>
+    <!-- Pied de page -->
+    <footer>
+        <div class="container-footer">
+            <!-- Sections du pied de page -->
+            <div class="footer-section">
+                <h3>Horaires d'ouverture</h3>
+                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
+                <p>Samedi : 8h45 - 12h00</p>
+                <p>Dimanche : Fermé</p>
+            </div>
+            <div class="footer-section">
+                <h3>Adresse</h3>
+                <p>123 Rue de la République</p>
+                <p>75001 Paris, France</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact :</h3>
+                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
+                <p>contact@garageparrot.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <!-- Droits d'auteur -->
+            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+        </div>
+    </footer>
+    <!-- Script pour activer/désactiver la navigation sur les appareils mobiles -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <!-- Chargement de la bibliothèque d'icônes -->
+    <script src="https://kit.fontawesome.com/8bd5dfedd7.js" crossorigin="anonymous"></script>
+</body>
+</html>

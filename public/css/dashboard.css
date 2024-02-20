@@ -1,0 +1,82 @@
+/* Styles du titre principal */
+.big-title {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Styles des images en plein largeur */
+.full-width-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0;
+}
+
+/* Styles du titre h2 dans le titre principal */
+.big-title h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Styles de l'overlay du titre principal */
+.big-title-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+/* dashboard.css */
+
+/* Style pour les onglets */
+.dashboard-tabs {
+    margin-top: 20px;
+}
+
+.dashboard-tabs ul.nav-tabs {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.dashboard-tabs ul.nav-tabs li.nav-item {
+    margin-right: 10px;
+}
+
+.dashboard-tabs ul.nav-tabs li.nav-item a.nav-link {
+    color: #495057;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.dashboard-tabs ul.nav-tabs li.nav-item a.nav-link.active {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+/* Style pour le contenu des onglets */
+.tab-content {
+    margin-top: 20px;
+}
+
+.tab-content .tab-pane {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

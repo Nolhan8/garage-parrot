@@ -1,0 +1,7 @@
+{
+    "intelephense.environment.php.executablePath": "C:/Program Files/PHP/php.exe",
+    "intelephense.environment.composerJson.enable": true,
+    "intelephense.environment.composerJson.path": "${workspaceRoot}/composer.json",
+    "intelephense.environment.composerJson.autoBuild": true,
+    "intelephense.environment.composerJson.autoReload": true
+}
