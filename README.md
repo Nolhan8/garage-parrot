@@ -4,13 +4,16 @@ Le code de mon application se trouve dans la branche master
 
 ## Description
 Voici mon dépôt pour mon entraînement ECF visant à la création d'un site pour une entreprise "Garage Vincent Parrot".
+Je tiens a préciser qu'il s'agît de mon premier projet complet alors je vous prie d'être compréhensif, Rome ne s'est pas fait en un jour !
 L'application en local est entièrement fonctionnelle si bien configurée, merci de me joindre si quelconque problème s'impose.
+J'ai testé toutes les fonctionnalités implémentées et il n'y a plus aucune erreur.
 
 ## Exécution en ligne
 J'ai loué un server fly.io pour ce projet à l'adresse : 
 - https://garage-parrot-nolhan.fly.dev/
 
-Cependant jusqu'ici je n'ai pu avoir qu'un chargement infini. Navré pour cela.
+Cependant jusqu'ici je n'ai pu avoir qu'un chargement infini. Navré pour cela. 
+
 ## Exécution en local
 Pour exécuter cette application localement, suivez ces étapes :
 
